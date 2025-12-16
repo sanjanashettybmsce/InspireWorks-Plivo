@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IVR System Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Multi-Level IVR System</h1>
+            <p class="subtitle">Plivo Voice API with Intelligent Agent Routing</p>
+        </header>
+
+        <!-- Outbound Call Section -->
+        <section class="card">
+            <h2>Initiate Outbound Call</h2>
+            <div class="call-form">
+                <input 
+                    type="tel" 
+                    id="phoneNumber" 
+                    placeholder="Enter phone number (e.g., +1234567890)"
+                    class="input-field"
+                >
+                <button id="callButton" class="btn-primary">Start Call</button>
+            </div>
+            <div id="callStatus" class="status-message"></div>
+        </section>
+
+        <!-- Agent Dashboard -->
+        <section class="card">
+            <h2>Live Agent Dashboard</h2>
+            
+            <div class="agent-section">
+                <h3>English Agents</h3>
+                <div id="englishAgents" class="agent-grid">
+                    <p class="loading">Loading...</p>
+                </div>
+            </div>
+
+            <div class="agent-section">
+                <h3>Spanish Agents</h3>
+                <div id="spanishAgents" class="agent-grid">
+                    <p class="loading">Loading...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call History -->
+        <section class="card">
+            <h2>Recent Call History</h2>
+            <div id="callHistory" class="call-history">
+                <p class="loading">Loading...</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Socket.IO -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
